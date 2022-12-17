@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Crear un Nuevo Post {% endblock %}
+
+{% block content %}
+
+
+
+
+{% if user.is_authenticated %}
+	</br><br>
+	<h1>Nuevo comentario</h1>
+	<hr>
+	</br><br>
+	<div class="form-group">
+
+		<form method="POST">
+			{% csrf_token %}
+			{{ form.media }}
+			{{ form.as_p }}
+			<button class="btn p-3 mb-2 bg-info text-white">Crear</button>
+		</form>
+		
+	</div>
+
+	<script>
+		var name = "{{ user.id }}";
+		document.getElementById("usuario").value = name
+	</script>
+
+{% else%}
+
+	Pagina no existe
+
+{% endif %}
+
+
+
+{% endblock %}
